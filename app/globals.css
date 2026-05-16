@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 244 20% 5%;
+    --foreground: 240 20% 96%;
+    --card: 244 20% 7%;
+    --card-foreground: 240 20% 96%;
+    --primary: 252 80% 64%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 244 20% 10%;
+    --secondary-foreground: 240 10% 80%;
+    --muted: 244 20% 10%;
+    --muted-foreground: 240 10% 55%;
+    --accent: 252 80% 64%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 244 20% 12%;
+    --input: 244 20% 10%;
+    --ring: 252 80% 64%;
+    --radius: 0.75rem;
+
+    --sf-bg: #07070c;
+    --sf-bg2: #0f0f17;
+    --sf-bg3: #14141f;
+    --sf-bg4: #1a1a28;
+    --sf-border: rgba(255,255,255,0.06);
+    --sf-border2: rgba(255,255,255,0.12);
+    --sf-text: #eeeef8;
+    --sf-text2: #8888aa;
+    --sf-text3: #4a4a68;
+    --sf-accent: #6c5ce7;
+    --sf-accent2: #a29bfe;
+    --sf-accent3: #4834d4;
+    --sf-green: #00b894;
+    --sf-amber: #fdcb6e;
+    --sf-red: #d63031;
+    --sf-pink: #fd79a8;
+    --sf-blue: #74b9ff;
+  }
+
+  .light {
+    --background: 240 20% 97%;
+    --foreground: 244 40% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 244 40% 8%;
+    --primary: 252 75% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 15% 94%;
+    --secondary-foreground: 244 20% 35%;
+    --muted: 240 15% 94%;
+    --muted-foreground: 244 15% 55%;
+    --accent: 252 75% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 15% 88%;
+    --input: 240 15% 94%;
+    --ring: 252 75% 58%;
+
+    --sf-bg: #f0f0f8;
+    --sf-bg2: #ffffff;
+    --sf-bg3: #f5f5fc;
+    --sf-bg4: #eaeaf5;
+    --sf-border: rgba(0,0,0,0.06);
+    --sf-border2: rgba(0,0,0,0.12);
+    --sf-text: #0a0a18;
+    --sf-text2: #505070;
+    --sf-text3: #9090b0;
+    --sf-accent: #5a4cd6;
+    --sf-accent2: #6c5ce7;
+    --sf-accent3: #4030b8;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar { width: 3px; height: 3px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 9px; }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Syne', system-ui, sans-serif; }
+  .gradient-text {
+    background: linear-gradient(135deg, var(--sf-text) 30%, var(--sf-accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-text-accent {
+    background: linear-gradient(135deg, var(--sf-accent2), var(--sf-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glass {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--sf-border2);
+  }
+  .glow-accent {
+    box-shadow: 0 0 0 1px var(--sf-accent)30, 0 8px 32px var(--sf-accent)20;
+  }
+  .skill-bar-fill {
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .heatmap-cell {
+    @apply w-3 h-3 rounded-sm cursor-pointer transition-all duration-150;
+  }
+  .heatmap-cell:hover {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 1px;
+  }
+}
+
+/* Heatmap levels */
+.heat-0 { background: var(--sf-bg4); }
+.heat-1 { background: rgba(108,92,231,0.2); }
+.heat-2 { background: rgba(108,92,231,0.45); }
+.heat-3 { background: rgba(108,92,231,0.7); }
+.heat-4 { background: var(--sf-accent); }
+
+/* Recharts overrides */
+.recharts-tooltip-wrapper { outline: none !important; }
+.recharts-cartesian-grid line { stroke: var(--sf-border2) !important; }
+.recharts-cartesian-axis-tick text { fill: var(--sf-text3) !important; font-size: 11px !important; }
